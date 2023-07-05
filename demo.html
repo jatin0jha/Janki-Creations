@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @media screen {
+            body {
+                background-color: rgb(255, 255, 255);
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                color: rgb(0, 0, 0);
+                margin: 0;
+            }
+
+            .dropbtn {
+                display: none;
+            }
+
+            nav {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 0 10%;
+                position: sticky;
+                top: 0;
+                z-index: 1;
+                background-color: rgba(255, 255, 255, 0.751);
+                backdrop-filter: blur(10px);
+            }
+
+            nav ul {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                list-style: none;
+            }
+
+            nav ul li a {
+                text-decoration: none;
+                color: rgb(85, 85, 85);
+                font-size: 1.1rem;
+                font-weight: 300;
+                margin: 0 20px;
+            }
+
+            main {
+                max-width: 1080px;
+                margin: 0 auto;
+                padding-top: 9vh;
+                display: none;
+                padding: 10px;
+                padding-top: 100px;
+            }
+
+            main:target {
+                display: block;
+            }
+
+            header {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                width: 100%;
+                margin-bottom: 10vh;
+            }
+
+            .heading {
+                font-size: 4rem;
+                font-weight: 600;
+                margin: 40px 0;
+            }
+
+            .man {
+                width: 50%;
+            }
+
+            .service {
+                width: 45%;
+            }
+
+            .search {
+                display: flex;
+                width: 100%;
+                background-color: white;
+                box-shadow: 0 0 60px 0 rgba(0, 0, 0, 0.108);
+            }
+
+            .search input {
+                width: 100%;
+                border: none;
+                outline: none;
+                padding: 30px;
+                font-size: 1.1rem;
+                font-weight: 300;
+            }
+
+            .search button {
+                border: none;
+                outline: none;
+                background-color: rgb(135, 192, 135);
+                padding: 30px;
+                font-size: 1.1rem;
+                font-weight: 300;
+                cursor: pointer;
+            }
+
+            .our-work {
+                text-align: center;
+                font-size: 30px;
+                margin-top: 200px;
+                color: rgb(138, 138, 138);
+            }
+
+            .works {
+                display: grid;
+                grid-template-columns: 1fr 2fr;
+                grid-gap: 10px;
+                margin: 15px 0;
+            }
+
+            .small-box {
+                aspect-ratio: 1;
+                border-radius: 30px;
+                background: linear-gradient(145deg, rgb(210, 231, 255) 0%, rgba(255, 255, 255, 0.7875744047619048) 60%, rgb(255, 233, 233) 100%);
+                box-shadow: 20px 20px 60px #bfc0c0,
+                    -20px -20px 60px #ffffff;
+            }
+
+            .big-box {
+                aspect-ratio: 1;
+                border-radius: 30px;
+                background: linear-gradient(125deg, rgb(210, 231, 255) 0%, rgba(255, 255, 255, 0.7875744047619048) 60%, rgb(255, 233, 233) 100%);
+                box-shadow: 20px 20px 60px #bfc0c0,
+                    -20px -20px 60px #ffffff;
+            }
+
+            footer {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 30px 8%;
+                background-color: rgba(0, 0, 0, 0.291);
+                color: rgb(255, 255, 255);
+            }
+
+            footer div {
+                width: 30%;
+            }
+
+            footer div p {
+                font-size: .8rem;
+                font-weight: 200;
+                line-height: 1.5;
+            }
+
+            footer div h5 {
+                font-size: 1.3rem;
+                font-weight: 500;
+                margin-bottom: 10px;
+            }
+
+            footer div ul {
+                list-style: none;
+                padding: 0;
+            }
+
+            footer div ul li a {
+                text-decoration: none;
+                color: rgba(255, 255, 255, 0.562);
+                font-size: .9rem;
+                font-weight: 200;
+                margin: 0 20px;
+            }
+
+            footer div ul li a:hover {
+                color: rgb(255, 255, 255);
+                font-weight: 500;
+            }
+
+            .serv-search {
+                display: flex;
+                align-items: center;
+                border-radius: 30px;
+                border: 1px solid rgba(0, 0, 0, 0.23);
+                max-width: 600px;
+                margin: 0 auto;
+                padding: 0 10px;
+            }
+
+            .serv-search input {
+                border: none;
+                width: 100%;
+                border-radius: 30px;
+                padding: 10px;
+            }
+
+            .serv-search input:focus {
+                outline: none;
+            }
+
+            .all-services {
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                grid-gap: 10px;
+                margin: 15px 0;
+            }
+
+            .service-card {
+                border-radius: 30px;
+                background-color: white;
+                box-shadow: 20px 20px 60px #bfc0c06f, -10px -10px 20px #ffffff;
+                padding: 20px;
+            }
+
+            .mysty{
+                margin-top: -60vh;
+            }
+
+            .service-card p{
+                display: flex;
+                align-items: center;
+            }
+
+            .service-card p a{
+                display: flex;
+                align-items: center;
+                text-decoration: none;
+                color: rgba(0, 0, 0, 0.366);
+                rotate: 90deg;
+                font-size: 15px;
+                font-weight: 900;
+            }
+        }
+
+        @media screen and (max-width: 865px) {
+
+
+            header {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: space-between;
+                width: 100%;
+                margin-bottom: 10vh;
+            }
+
+            .man {
+                display: none;
+            }
+
+            .service {
+                width: 80%;
+            }
+
+            .all-services {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .works {
+                display: grid;
+                grid-template-columns: 1fr;
+                grid-gap: 10px;
+                margin: 15px 0;
+            }
+
+            .small-box {
+                aspect-ratio: 1;
+                width: 70%;
+            }
+        }
+
+        @media screen and (max-width: 711px) {
+            .dropbtn {
+                display: block;
+                padding: 16px;
+                font-size: 16px;
+                border: none;
+            }
+
+            /* Dropdown Content (Hidden by Default) */
+            .dropdown-content {
+                display: none;
+                position: absolute;
+                right: 0;
+                top: 7vh;
+                z-index: 1;
+                background-color: rgba(255, 255, 255, 0.714);
+                backdrop-filter: blur(10px);
+                border-radius: 30px;
+
+            }
+
+            /* Links inside the dropdown */
+            .dropdown-content a {
+                color: black;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+            }
+
+            /* Change color of dropdown links on hover */
+            .dropdown-content a:hover {
+                color: grey;
+            }
+
+            /* Show the dropdown menu on hover */
+            .dropdown:hover .dropdown-content {
+                display: block;
+            }
+
+            .heading {
+                font-size: 3rem;
+                font-weight: 600;
+                margin: 40px 0;
+            }
+
+            .all-services {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="dropdown">
+        <h1 style="font-size: 2rem; font-weight: 500;">JANKI.</h1>
+        <div class="dropbtn">MENU&#9662;</div>
+        <ul class="dropdown-content">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+        </ul>
+    </nav>
+
+    <main id="home">
+        <header>
+            <div class="service">
+                <p class="heading">Marketing<br>Compliances</p>
+                <img src="Untitled_design-removebg-preview.png" style="width: 100%;" alt="">
+                <div class="search">
+                    <input type="search" name="search" id="search" placeholder="Search...">
+                    <button>GO</button>
+                </div>
+            </div>
+            <div class="man">
+                <img src="https://freepngimg.com/thumb/man/2-2-man-transparent.png" style="width: 75%; " alt="">
+                <div
+                    style="padding: 20px 40px; padding-bottom: 70px; font-size: 1.2rem; margin-top: -100px; background-color: rgba(255, 255, 255, 0.751); backdrop-filter: blur(20px);">
+                    Compliance and <br>Control
+                </div>
+                <div class="mysty">
+                    <div style="background-color: rgb(205, 255, 255); width: 60%; aspect-ratio: 1; border-radius: 50%;">
+                    </div>
+                    <div
+                        style="background-color: rgb(255, 250, 205); width: 60%; aspect-ratio: 1; border-radius: 50%; margin-left: 120px; margin-top: -200px;">
+                    </div>
+                </div>
+            </div>
+        </header>
+        <p class="our-work">Our Work</p>
+        <div class="works">
+            <div class="small-box"></div>
+            <div class="big-box"></div>
+        </div>
+    </main>
+
+    <main style="width: 100%;" id="contact">
+        <div data-aidaform-widget="form-2019-12" data-url="https://aiufab.aidaform.com/contact-us" data-width="100%"
+            data-height="500px" data-do-resize></div>
+        <script>(function () { var r, d = document, gt = d.getElementById, cr = d.createElement, tg = d.getElementsByTagName, id = "aidaform-embed"; if (!gt.call(d, id)) { r = cr.call(d, "script"); r.id = id; r.src = "https://embed.aidaform.com/embed.js"; (d.head || tg.call(d, "head")[0]).appendChild(r); } })()</script>
+    </main>
+
+    <main id="services">
+        <h1 style="text-align: center;">Services</h1>
+        <div class="serv-search">
+            <input type="search" placeholder="Search in services...">
+            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30" viewBox="0 0 30 30">
+                <path
+                    d="M 13 3 C 7.4889971 3 3 7.4889971 3 13 C 3 18.511003 7.4889971 23 13 23 C 15.396508 23 17.597385 22.148986 19.322266 20.736328 L 25.292969 26.707031 A 1.0001 1.0001 0 1 0 26.707031 25.292969 L 20.736328 19.322266 C 22.148986 17.597385 23 15.396508 23 13 C 23 7.4889971 18.511003 3 13 3 z M 13 5 C 17.430123 5 21 8.5698774 21 13 C 21 17.430123 17.430123 21 13 21 C 8.5698774 21 5 17.430123 5 13 C 5 8.5698774 8.5698774 5 13 5 z">
+                </path>
+            </svg>
+        </div>
+        <div class="all-services">
+            <div class="service-card">
+                <h2>Residential Conferences</h2>
+                <h1 style="color: rgb(138, 138, 138); padding: 0;">200+</h1>
+                <div>
+                    <p>
+                        JANKI Creations specializes in organizing residential conferences across India.
+                        <a href="#" class="visit-link">
+                            Visit
+                            <svg
+                                style="margin: 5px;" stroke="currentColor" fill="none" stroke-width="0" viewBox="0 0 24 24" height="16"
+                                width="16" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                </path>
+                            </svg>
+                        </a>
+                    </p>
+                </div>
+            </div>
+            <div class="service-card">
+                <h2>Non-Residential Conferences</h2>
+                <h1 style="color: rgb(138, 138, 138); padding: 0;">50+</h1>
+                <p>
+                    JANKI Creations offers top-notch non-residential conference solutions.
+                    <a href="#" class="visit-link">
+                        Visit
+                        <svg
+                            style="margin: 5px;" stroke="currentColor" fill="none" stroke-width="0" viewBox="0 0 24 24" height="16"
+                            width="16" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                            </path>
+                        </svg>
+                    </a>
+                </p>
+            </div>
+            <div class="service-card">
+                <h2>Product Launch</h2>
+                <h1 style="color: rgb(138, 138, 138); padding: 0;">50+</h1>
+                <p>
+                    Trust JANKI Creations to make your product launch unforgettable.
+                    <a href="#" class="visit-link">
+                        Visit
+                        <svg
+                            style="margin: 5px;" stroke="currentColor" fill="none" stroke-width="0" viewBox="0 0 24 24" height="16"
+                            width="16" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                            </path>
+                        </svg>
+                    </a>
+                </p>
+            </div>
+            <div class="service-card">
+                <h2>Training Program</h2>
+                <h1 style="color: rgb(138, 138, 138); padding: 0;">1000+</h1>
+                <p>
+                    Enhance the skills of your workforce through our comprehensive training programs.
+                    <a href="#" class="visit-link">
+                        Visit
+                        <svg
+                            style="margin: 5px;" stroke="currentColor" fill="none" stroke-width="0" viewBox="0 0 24 24" height="16"
+                            width="16" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                            </path>
+                        </svg>
+                    </a>
+                </p>
+            </div>
+            <div class="service-card">
+                <h2>Medico Marketing</h2>
+                <h1 style="color: rgb(138, 138, 138); padding: 0;">300+</h1>
+                <p>
+                    JANKI Creations specializes in medico marketing services.
+                    <a href="#" class="visit-link">
+                        Visit
+                        <svg
+                            style="margin: 5px;" stroke="currentColor" fill="none" stroke-width="0" viewBox="0 0 24 24" height="16"
+                            width="16" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                            </path>
+                        </svg>
+                    </a>
+                </p>
+            </div>
+            <div class="service-card">
+                <h2>Audit and Control</h2>
+                <h1 style="color: rgb(138, 138, 138); padding: 0;">100+</h1>
+                <p>
+                    Ensure the smooth operation of your events with our audit and control services.
+                    <a href="#" class="visit-link">
+                        Visit
+                        <svg
+                            style="margin: 5px;" stroke="currentColor" fill="none" stroke-width="0" viewBox="0 0 24 24" height="16"
+                            width="16" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                            </path>
+                        </svg>
+                    </a>
+                </p>
+            </div>
+            <div class="service-card">
+                <h2>Corporate Gifting</h2>
+                <h1 style="color: rgb(138, 138, 138); padding: 0;">500+</h1>
+                <p>
+                    Strengthen your business relationships with our premium corporate gifting services.
+                    <a href="#" class="visit-link">
+                        Visit
+                        <svg
+                            style="margin: 5px;" stroke="currentColor" fill="none" stroke-width="0" viewBox="0 0 24 24" height="16"
+                            width="16" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                            </path>
+                        </svg>
+                    </a>
+                </p>
+            </div>
+            <div class="service-card">
+                <h2>Advertisement and Promotions</h2>
+                <h1 style="color: rgb(138, 138, 138); padding: 0;">250+</h1>
+                <p>
+                    Amplify your brand presence with our effective advertising and promotion strategies.
+                    <a href="#" class="visit-link">
+                        Visit
+                        <svg
+                            style="margin: 5px;" stroke="currentColor" fill="none" stroke-width="0" viewBox="0 0 24 24" height="16"
+                            width="16" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                            </path>
+                        </svg>
+                    </a>
+                </p>
+            </div>
+            <div class="service-card">
+                <h2>Technical Solutions</h2>
+                <h1 style="color: rgb(138, 138, 138); padding: 0;">400+</h1>
+                <p>
+                    JANKI Creations provides cutting-edge technical solutions for events.
+                    <a href="#" class="visit-link">
+                        Visit
+                        <svg
+                            style="margin: 5px;" stroke="currentColor" fill="none" stroke-width="0" viewBox="0 0 24 24" height="16"
+                            width="16" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                            </path>
+                        </svg>
+                    </a>
+                </p>
+            </div>
+            <div class="service-card">
+                <h2>National and International Conferences</h2>
+                <h1 style="color: rgb(138, 138, 138); padding: 0;">100+</h1>
+                <p>
+                    JANKI Creations organizes national and international conferences that bring together experts from
+                    various fields.
+                    <a href="#" class="visit-link">
+                        Visit
+                        <svg
+                            style="margin: 5px;" stroke="currentColor" fill="none" stroke-width="0" viewBox="0 0 24 24" height="16"
+                            width="16" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                            </path>
+                        </svg>
+                    </a>
+                </p>
+            </div>
+            <div class="service-card">
+                <h2>Planning and Execution of Conferences</h2>
+                <h1 style="color: rgb(138, 138, 138); padding: 0;">300+</h1>
+                <p>
+                    Trust JANKI Creations to handle the planning and execution of your conferences.
+                    <a href="#" class="visit-link">
+                        Visit
+                        <svg
+                            style="margin: 5px;" stroke="currentColor" fill="none" stroke-width="0" viewBox="0 0 24 24" height="16"
+                            width="16" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                            </path>
+                        </svg>
+                    </a>
+                </p>
+            </div>
+            <div class="service-card">
+                <h2>Incentive Program</h2>
+                <h1 style="color: rgb(138, 138, 138); padding: 0;">150+</h1>
+                <p>
+                    Motivate and reward your team with our incentive programs.
+                    <a href="#" class="visit-link">
+                        Visit
+                        <svg
+                            style="margin: 5px;" stroke="currentColor" fill="none" stroke-width="0" viewBox="0 0 24 24" height="16"
+                            width="16" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                            </path>
+                        </svg>
+                    </a>
+                </p>
+            </div>
+            <div class="service-card">
+                <h2>Exhibition</h2>
+                <h1 style="color: rgb(138, 138, 138); padding: 0;">200+</h1>
+                <p>
+                    Showcase your products and services to a targeted audience through our expertly managed exhibitions.
+                    <a href="#" class="visit-link">
+                        Visit
+                        <svg
+                            style="margin: 5px;" stroke="currentColor" fill="none" stroke-width="0" viewBox="0 0 24 24" height="16"
+                            width="16" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                            </path>
+                        </svg>
+                    </a>
+                </p>
+            </div>
+        </div>
+    </main>
+
+
+    <footer>
+        <div>
+            <h5>JANKI.</h5>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
+            <p>&copy; Copyrights. All rights reserved. <a href="#">janki.co.in</a></p>
+        </div>
+        <div>
+            <h5>Quick links</h5>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About us</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Contact us</a></li>
+            </ul>
+        </div>
+        <div>
+            <h5>Newsletter</h5>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
+            <form action="#">
+                <div style="display: flex; width: min-content; width: 100%;">
+                    <input
+                        style="background: none;  border: 1px solid rgba(103, 103, 103, 0.58); color: black; padding: 5px 10px; width: 100%;"
+                        type="email" placeholder="Recipient's Email">
+                    <button
+                        style="background-color: rgb(0, 123, 255); aspect-ratio: 1; cursor: pointer; border: 1px solid rgb(0, 123, 255);"
+                        type="button"><svg class="svg-icon"
+                            style="width: 20px; aspect-ratio: 1; vertical-align: middle;fill: white;overflow: hidden;"
+                            viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M899.6 117c9.9 7.1 13.8 16.7 12 28.5L797.3 831.2c-1.5 8.6-6.3 15.3-14.3 20.1-4.1 2.3-8.8 3.6-13.8 3.6-3.3 0-6.9-0.8-10.7-2.3L556.3 770 448.2 901.8c-5.4 6.9-12.7 10.2-21.9 10.2-3.8 0-7.1-0.6-9.9-1.8-5.6-2.1-10.2-5.5-13.6-10.5-3.4-4.9-5.2-10.3-5.2-16.3V727.7l385.7-472.8-477.2 413-176.3-72.3c-11-4.1-17-12.3-17.8-24.6-0.6-11.9 4.1-20.7 14.3-26.4L869.1 116c4.5-2.7 9.2-4 14.3-4 6 0 11.4 1.7 16.2 5z" />
+                        </svg></button>
+                </div>
+            </form>
+        </div>
+    </footer>
+</body>
+
+</html>
